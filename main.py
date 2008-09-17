@@ -1,12 +1,20 @@
 import wsgiref.handlers
+
 from google.appengine.ext import webapp
 
+import base
 import identica
+import lastfm
+
+uris = [
+  ('^/$', base.Index),
+  ('^/identica(/(.*?))?/?', identica.Main),
+  ('^/lastfm(/(.*?))?(/(.*?))?/?', lastfm.Main),
+  ('^/.*$', base.NotFound)
+]
 
 def main():
-  application = webapp.WSGIApplication([('^/identi.ca/(.+)/?$', identica.IdenticaService)], debug=True)
-  wsgiref.handlers.CGIHandler().run(application)
+  wsgiref.handlers.CGIHandler().run(webapp.WSGIApplication(uris, debug=True))
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
   main()

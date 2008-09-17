@@ -1,26 +1,22 @@
-from google.appengine.api import urlfetch
-from google.appengine.ext import webapp
+from xml.dom import minidom
 
-from xml.dom.minidom import parseString
-from xml.parsers.expat import ExpatError
+from google.appengine import api
 
+import base
 
-class IdenticaService(webapp.RequestHandler):
+class Main(base.RequestHandler):
 
-  def get(self, user):
-    try:
-      f = urlfetch.fetch('http://identi.ca/%s/rss' % user)
-      xml = f.content
-      doc = parseString(xml)
-      
-    except:
-      self.response.out.write("ERROR")
-      return
-    
-    try:
-      text = doc.getElementsByTagName('title')[2].firstChild.nodeValue
-    except:
-      self.response.out.write("%s has zero posts" % user)
-      return
-    
-    self.response.out.write(text)
+    def get(self, *args):
+        user = args[1] or ""
+        if not user:
+            return self.ok("Please provide a username.")
+        try:
+            xml = api.urlfetch.fetch("http://identi.ca/%s/rss" % user).content
+            doc = minidom.parseString(xml)
+        except:
+            return self.ok("Error parsing user feed.")
+        try:
+            text = doc.getElementsByTagName('title')[2].firstChild.nodeValue
+        except:
+            return self.ok("No posts found." % user)
+        return self.ok(text)
