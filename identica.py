@@ -8,6 +8,8 @@ class Main(base.RequestHandler):
 
     def get(self, *args):
         user = args[1] or ""
+        if args[3]:
+            user = args[3]
         if not user:
             return self.ok("Please provide a username.")
         try:
@@ -18,5 +20,5 @@ class Main(base.RequestHandler):
         try:
             text = doc.getElementsByTagName('title')[2].firstChild.nodeValue
         except:
-            return self.ok("No posts found." % user)
+            return self.ok("No posts found.")
         return self.ok(text)

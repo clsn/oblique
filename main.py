@@ -8,7 +8,7 @@ import lastfm
 
 uris = [
   ('^/$', base.Index),
-  ('^/identica(/(.*?))?/?', identica.Main),
+  ('^/identica(/(.*?))?(/(.*?))?/?', identica.Main),
   ('^/lastfm(/(.*?))?(/(.*?))?/?', lastfm.Main),
   ('^/.*$', base.NotFound)
 ]
