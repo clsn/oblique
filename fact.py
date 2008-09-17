@@ -1,9 +1,9 @@
 import urllib
-from xml.dom import minidom
 
 from google.appengine import api
 
 import base
+from contrib import BeautifulSoup
 
 class Main(base.RequestHandler):
 
@@ -15,9 +15,11 @@ class Main(base.RequestHandler):
         if not uri.startswith("http://"):
             uri = "http://" + uri
         try:
-            tree = minidom.parseString(api.urlfetch.fetch(uri).content)
-        except Exception, error:
+            tree = BeautifulSoup.BeautifulSoup(api.urlfetch.fetch(uri).content)
+        except:
             return self.ok("Error fetching new fact.")
-        for element in tree.getElementsByTagName("p"):
-            if element.getAttribute("class") == "fact":
-                return self.ok(base.text(element))
+        try:
+            message= tree.find("p", {"class" : "fact"}).string
+        except:
+            return self.ok("Could not find new fact.")
+        return self.ok(message)

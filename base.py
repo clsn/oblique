@@ -5,13 +5,6 @@ URI = "http://code.google.com/p/phenny-ws/"
 def collapse(string):
     return " ".join(string.split())
 
-def text(element):
-    text = ""
-    for child in element.childNodes:
-        if child.TEXT_NODE:
-            text += child.data
-    return text
-
 class RequestHandler(webapp.RequestHandler):
 
     def ok(self, message):
