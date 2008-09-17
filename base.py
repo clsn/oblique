@@ -8,7 +8,7 @@ def collapse(string):
 class RequestHandler(webapp.RequestHandler):
 
     def ok(self, message):
-        self.response.headers['Content-Type'] = "text/plain"
+        self.response.headers["Content-Type"] = "text/plain"
         self.response.out.write(message + "\n")
 
 class Index(RequestHandler):
