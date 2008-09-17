@@ -21,7 +21,7 @@ class Main(base.RequestHandler):
         except:
             return self.ok("Error fetching new fact.")
         try:
-            message= tree.find("p", {"class" : "fact"}).string
+            message = base.collapse(tree.find("p", {"class" : "fact"}).string)
         except:
             return self.ok("Could not find new fact.")
         return self.ok(message)
