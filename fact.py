@@ -15,7 +15,9 @@ class Main(base.RequestHandler):
         if not uri.startswith("http://"):
             uri = "http://" + uri
         try:
-            tree = BeautifulSoup.BeautifulSoup(api.urlfetch.fetch(uri).content)
+            tree = BeautifulSoup.BeautifulSoup(
+                api.urlfetch.fetch(uri).content,
+                convertEntities=BeautifulSoup.BeautifulStoneSoup.HTML_ENTITIES)
         except:
             return self.ok("Error fetching new fact.")
         try:
