@@ -7,12 +7,14 @@ import identica
 import lastfm
 import fact
 import steps
+import soccer
 
 uris = [
   ("^/$", base.Index),
   ("^/identica(/(.*?))?(/(.*?))?/?", identica.Main),
   ("^/lastfm(/(.*?))?(/(.*?))?/?", lastfm.Main),
   ("^/fact(/(.*?))?/?", fact.Main),
+  ("^/soccer(/(.*?))?/?", soccer.Main),
 
   ("^/steps(/(.*?))?/?", steps.Main),
 
