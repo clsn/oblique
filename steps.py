@@ -34,7 +34,7 @@ class Main(base.RequestHandler):
         try:
             tree = BeautifulSoup.BeautifulSoup(api.urlfetch.fetch(uri).content)
         except:
-            return self.ok("Error fetching new Wikipedia distance.")
+            return self.ok("Error fetching Wikipedia distance.")
         try:
             messages = []
             for a in tree.findAll("a"):
