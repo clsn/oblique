@@ -6,13 +6,18 @@ import base
 import identica
 import lastfm
 import fact
+import steps
 
 uris = [
-  ('^/$', base.Index),
-  ('^/identica(/(.*?))?(/(.*?))?/?', identica.Main),
-  ('^/lastfm(/(.*?))?(/(.*?))?/?', lastfm.Main),
-  ('^/fact(/(.*?))?/?', fact.Main),
-  ('^/.*$', base.NotFound)
+  ("^/$", base.Index),
+  ("^/identica(/(.*?))?(/(.*?))?/?", identica.Main),
+  ("^/lastfm(/(.*?))?(/(.*?))?/?", lastfm.Main),
+  ("^/fact(/(.*?))?/?", fact.Main),
+
+  ("^/steps(/(.*?))?/?", steps.Main),
+
+  ("^/.*$", base.NotFound)
+
 ]
 
 def main():
