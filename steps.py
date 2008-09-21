@@ -35,7 +35,9 @@ class Main(base.RequestHandler):
         query = urllib.urlencode({"from": from_name, "to": to_name})
         uri = API_URI + "?" + query
         try:
-            tree = BeautifulSoup.BeautifulSoup(api.urlfetch.fetch(uri).content)
+            tree = BeautifulSoup.BeautifulSoup(
+                api.urlfetch.fetch(uri).content,
+                convertEntities=BeautifulSoup.BeautifulStoneSoup.HTML_ENTITIES)
         except:
             return self.ok("Error fetching Wikipedia distance.")
         try:
