@@ -9,6 +9,7 @@ import fact
 import steps
 import soccer
 import stupid
+import unicode
 
 uris = [
   ("^/$", base.Index),
@@ -18,6 +19,7 @@ uris = [
   ("^/soccer(/(.*?))?/?", soccer.Main),
   ("^/steps(/(.*?))?/?", steps.Main),
   ("^/stupid(/(.*?))?/?", stupid.Main),
+  ("^/unicode(/(.*?))?/?", unicode.Main),
   ("^/.*$", base.NotFound)
 ]
 
