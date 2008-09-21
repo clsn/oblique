@@ -8,6 +8,7 @@ import lastfm
 import fact
 import steps
 import soccer
+import stupid
 
 uris = [
   ("^/$", base.Index),
@@ -15,11 +16,9 @@ uris = [
   ("^/lastfm(/(.*?))?(/(.*?))?/?", lastfm.Main),
   ("^/fact(/(.*?))?/?", fact.Main),
   ("^/soccer(/(.*?))?/?", soccer.Main),
-
   ("^/steps(/(.*?))?/?", steps.Main),
-
+  ("^/stupid(/(.*?))?/?", stupid.Main),
   ("^/.*$", base.NotFound)
-
 ]
 
 def main():
