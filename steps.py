@@ -12,7 +12,10 @@ API_URI = "http://www.netsoc.tcd.ie/~mu/cgi-bin/shortpath.cgi"
 class Main(base.RequestHandler):
 
     def get(self, *args):
-        query = StringIO.StringIO(urllib.unquote(args[1]))
+        query = urllib.unquote(args[1])
+        if not query:
+            return self.ok("Please provide two Wikipedia article titles.")
+        query = StringIO.StringIO(query)
         try:
             query_tokens = csv.reader(query, delimiter=" ").next()
         except:
