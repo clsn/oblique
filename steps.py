@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import csv
 import StringIO
 import urllib
@@ -12,7 +14,7 @@ API_URI = "http://www.netsoc.tcd.ie/~mu/cgi-bin/shortpath.cgi"
 class Main(base.RequestHandler):
 
     def get(self, *args):
-        query = urllib.unquote(args[1])
+        query = base.collapse(urllib.unquote(args[1]))
         if not query:
             return self.ok("Please provide two Wikipedia article titles.")
         query = StringIO.StringIO(query)
@@ -35,10 +37,12 @@ class Main(base.RequestHandler):
         query = urllib.urlencode({"from": from_name, "to": to_name})
         uri = API_URI + "?" + query
         try:
-            tree = BeautifulSoup.BeautifulSoup(
-                api.urlfetch.fetch(uri).content,
-                convertEntities=BeautifulSoup.BeautifulStoneSoup.HTML_ENTITIES)
-        except:
+            html = api.urlfetch.fetch(uri).content.decode("latin")
+            # @@ .o steps "Kelleys Island School" "Białogórze"
+            # @@ using the BeautifulSoup entity method produces a parse error
+            tree = BeautifulSoup.BeautifulSoup(html)
+        except Exception, error:
+            self.ok(str(error))
             return self.ok("Error fetching Wikipedia distance.")
         try:
             messages = []
