@@ -8,6 +8,7 @@ from google.appengine import api
 
 import base
 from contrib import BeautifulSoup
+from contrib import unescape
 
 API_URI = "http://www.netsoc.tcd.ie/~mu/cgi-bin/shortpath.cgi"
 
@@ -37,13 +38,11 @@ class Main(base.RequestHandler):
         query = urllib.urlencode({"from": from_name, "to": to_name})
         uri = API_URI + "?" + query
         try:
-            html = api.urlfetch.fetch(uri).content.decode("latin")
-            # @@ .o steps "Kelleys Island School" "Białogórze"
-            # @@ using the BeautifulSoup entity method produces a parse error
+            html = api.urlfetch.fetch(uri).content
+            html = unescape.unescape(html.decode("latin1"))
             tree = BeautifulSoup.BeautifulSoup(html)
         except Exception, error:
-            self.ok(str(error))
-            return self.ok("Error fetching Wikipedia distance.")
+            return self.ok("Timeout fetching Wikipedia distance.")
         try:
             messages = []
             for a in tree.findAll("a"):
@@ -52,6 +51,12 @@ class Main(base.RequestHandler):
         except:
             return self.ok("Could not find Wikipedia distance.")
         if not messages:
-            self.ok(tree.find("b").string + ".")
+            try:
+                self.ok(tree.find("b").string + ".")
+            except:
+                try:
+                    self.ok(tree.find("h2").string + ".")
+                except:
+                    self.ok("Error parsing Wikipedia distance.")
         message = " > ".join(messages)
         return self.ok(message)
