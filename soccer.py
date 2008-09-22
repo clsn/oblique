@@ -22,7 +22,7 @@ class Main(base.RequestHandler):
         for entry in doc.getElementsByTagName("title")[1:-1]:
             scoreline = entry.childNodes[0].toxml()
             if regexp.match(scoreline):
-                return self.ok(scoreline)
+                return self.ok(base.collapse(scoreline))
 
         self.ok("No score was found for your query '%s'!" % text)
 
