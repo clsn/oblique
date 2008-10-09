@@ -16,7 +16,7 @@ class Main(base.RequestHandler):
     def get(self, *args):
         word = args[1]
         if not word:
-            self.ok("Please provide a seed word.")
+            self.ok("Please provide a word.")
         word = urllib.unquote(word)
         payload = urllib.urlencode({"q": word})
         try:
