@@ -12,7 +12,7 @@ class Main(base.RequestHandler):
     def get(self, *args):
         if not args[1] or not args[3]:
             return self.ok("Invalid ticket path: %s" % self.request.path)
-        project = urllib.unquote(args[1]).lstrip("#")
+        project = urllib.unquote(args[1]).lstrip("#").upper()
         tag = "%s-%s" % (project, args[3])
         url = '/'.join([URI, tag, "%s.xml" % tag])
         resp = api.urlfetch.fetch(url)
