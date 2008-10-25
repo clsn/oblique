@@ -23,7 +23,7 @@ uris = [
   ("^/soccer(/(.*?))?/?", soccer.Main),
   ("^/steps(/(.*?))?/?", steps.Main),
   ("^/stupid(/(.*?))?/?", stupid.Main),
-  ("^/ticket(/(.*?))?/?", ticket.Main),
+  ("^/ticket(/(.*?))?(/(.*?))?/?", ticket.Main),
   ("^/internet(/(.*?))?/?", internet.Main),
   ("^/unicode(/(.*?))?/?", unicode.Main),
   ("^/.*$", base.NotFound)
