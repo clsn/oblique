@@ -21,4 +21,6 @@ class Main(base.RequestHandler):
         else:
             d = feedparser.parse(resp.content)
             item = d["items"][0]
-            return self.ok("%s [%s] %s" % (item["link"], item["type"], item["content"][0]["value"]))
+            ret = "[%s] %s" % (item["type"], item["content"][0]["value"])
+            link = item["link"]
+            return self.ok("%s %s" % (ret[:350 - len(link) - 1], link))
