@@ -12,7 +12,7 @@ class Main(base.RequestHandler):
 
     def get(self, *args):
         d = datetime.datetime.now()
-        if not d.month == 12 and d.day == 25:
+        if not (d.month == 12 and d.day == 25):
             soup = BeautifulSoup.BeautifulSoup(api.urlfetch.fetch(URI).content)
             return self.ok("No! %s" % soup.findAll('body')[0].find(recursive=False, text=True).strip())
         else:
