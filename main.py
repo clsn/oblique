@@ -26,6 +26,7 @@ uris = [
   ("^/ticket(/(.*?))?(/(.*?))?/?", ticket.Main),
   ("^/internet(/(.*?))?/?", internet.Main),
   ("^/unicode(/(.*?))?/?", unicode.Main),
+  ("^/sets(/(.*?))?/?", sets.Main),
   ("^/.*$", base.NotFound)
 ]
 
