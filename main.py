@@ -13,7 +13,7 @@ import stupid
 import ticket
 import unicode
 import internet
-import sets
+import googlesets
 
 uris = [
   ("^/$", base.Index),
@@ -27,7 +27,7 @@ uris = [
   ("^/ticket(/(.*?))?(/(.*?))?/?", ticket.Main),
   ("^/internet(/(.*?))?/?", internet.Main),
   ("^/unicode(/(.*?))?/?", unicode.Main),
-  ("^/sets(/(.*?))?/?", sets.Main),
+  ("^/sets(/(.*?))?/?", googlesets.Main),
   ("^/.*$", base.NotFound)
 ]
 
