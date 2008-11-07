@@ -13,6 +13,7 @@ import stupid
 import ticket
 import unicode
 import internet
+import sets
 
 uris = [
   ("^/$", base.Index),
