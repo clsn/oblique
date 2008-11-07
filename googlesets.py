@@ -1,4 +1,6 @@
 import urllib
+import StringIO
+import csv
 
 from google.appengine import api
 
@@ -6,7 +8,7 @@ import base
 from contrib import BeautifulSoup
 import re
 
-basuri="http://labs.google.com/sets"
+baseuri="http://labs.google.com/sets"
 
 def startswithgoogle(s):
     return s.startswith("http://www.google.com/search?")
@@ -14,10 +16,12 @@ def startswithgoogle(s):
 class Main(base.RequestHandler):
 
     def get(self, *args):
-        words=map(urllib.unquote, args[1:6])
-        if not words:
+        query=base.collapse(urllib.unquote(args[1]))
+        if not query:
             self.ok("Please provide some sample elements.")
-        keys=map(str.__add__,['q']*5,map(str,range(1,5)))
+        query=StringIO.StringIO(query)
+        words=csv.reader(query, delimiter=" ").next()
+        keys=map(str.__add__,['q']*5,map(str,range(1,6)))
         dct={}
         for i in range(0,5):
             try:
@@ -28,7 +32,7 @@ class Main(base.RequestHandler):
         dct['hl']='en'
         query=urllib.urlencode(dct)
         try:
-            fetch=api.urlfetch(baseuri+'?'+query)
+            fetch=api.urlfetch.fetch(baseuri+'?'+query)
             html=fetch.content
         except Exception:
             return self.ok("Error fetching results")
