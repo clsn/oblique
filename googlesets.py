@@ -25,9 +25,9 @@ class Main(base.RequestHandler):
             except Exception:
                 dct[keys[i]]=""
         dct['btn']='Small Set (15 items or fewer)'
+        query=urllib.urlencode(dct)
         try:
-            fetch=api.urlfetch(baseuri,method=api.urlfetch.GET,
-                               payload=payload)
+            fetch=api.urlfetch(baseuri+'?'+query)
             html=fetch.content
         except Exception:
             return self.ok("Error fetching results")
