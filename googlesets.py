@@ -16,9 +16,10 @@ def startswithgoogle(s):
 class Main(base.RequestHandler):
 
     def get(self, *args):
-        query=base.collapse(urllib.unquote(args[1]))
-        if not query:
-            self.ok("Please provide some sample elements.")
+        try:
+            query=base.collapse(urllib.unquote(args[1]))
+        except Exception:
+            return self.ok("Please provide some sample elements.")
         query=StringIO.StringIO(query)
         words=csv.reader(query, delimiter=" ").next()
         keys=map(str.__add__,['q']*5,map(str,range(1,6)))
@@ -41,6 +42,8 @@ class Main(base.RequestHandler):
             #convertEntities=BeautifulSoup.BeautifulStoneSoup.HTML_ENTITIES)
             links=tree.findAll("a", {"href":startswithgoogle})
             message = ", ".join(map((lambda x: x.string), links))
+            if not message:
+                message="Nothing found.  All lonely."
         except:
             return self.ok("Error parsing results.")        
         return self.ok(message)
