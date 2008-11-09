@@ -15,6 +15,7 @@ import unicode
 import internet
 import vary
 import googlesets
+import search
 
 uris = [
   ("^/$", base.Index),
@@ -30,6 +31,7 @@ uris = [
   ("^/unicode(/(.*?))?/?", unicode.Main),
   ("^/vary(/(.*?))?/?", vary.Main),
   ("^/sets(/(.*?))?/?", googlesets.Main),
+  ("^/search(/(.*?))?(/(.*?))?/?", search.Main),
   ("^/.*$", base.NotFound)
 ]
 
