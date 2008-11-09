@@ -20,4 +20,8 @@ class Main(base.RequestHandler):
             return self.ok("Error decoding UTF-8 character.")
         if len(unicode) > 1:
             return self.ok("Please provide only one UTF-8 character.")
-        self.ok("%s - %s" % (unicodedata.name(unicode[0]), URI % ord(unicode[0])))
+        try:
+            name = unicodedata.name(unicode[0])
+        except:
+            name = "(No name found)"
+        self.ok("%s - %s" % (name, URI % ord(unicode[0])))
