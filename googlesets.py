@@ -43,7 +43,7 @@ class Main(base.RequestHandler):
             links=tree.findAll("a", {"href":startswithgoogle})
             message = ", ".join(map((lambda x: x.string), links))
             if not message:
-                message="Nothing found.  All lonely."
+                message="Nothing found. All lonely."
         except:
             return self.ok("Error parsing results.")        
         return self.ok(message)
