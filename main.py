@@ -16,6 +16,7 @@ import internet
 import vary
 import googlesets
 import search
+import connect
 
 uris = [
   ("^/$", base.Index),
@@ -32,6 +33,7 @@ uris = [
   ("^/vary(/(.*?))?/?", vary.Main),
   ("^/sets(/(.*?))?/?", googlesets.Main),
   ("^/search(/(.*?))?/?", search.Main),
+  ("^/bacon(/(.*?))?/?", connect.Main),
   ("^/.*$", base.NotFound)
 ]
 
