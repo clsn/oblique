@@ -17,6 +17,7 @@ import vary
 import googlesets
 import search
 import connect
+import boring
 
 uris = [
   ("^/$", base.Index),
@@ -34,7 +35,7 @@ uris = [
   ("^/sets(/(.*?))?/?", googlesets.Main),
   ("^/search(/(.*?))?/?", search.Main),
   ("^/connect(/(.*?))?/?", connect.Main),
-  ("^/bacon(/(.*?))?/?", connect.Main),
+  ("^/boring(/(.*?))?/?", boring.Main),
   ("^/.*$", base.NotFound)
 ]
 
