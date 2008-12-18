@@ -17,7 +17,6 @@ import vary
 import googlesets
 import search
 import connect
-import boring
 
 uris = [
   ("^/$", base.Index),
