@@ -34,7 +34,6 @@ uris = [
   ("^/vary(/(.*?))?/?", vary.Main),
   ("^/sets(/(.*?))?/?", googlesets.Main),
   ("^/search(/(.*?))?/?", search.Main),
-  ("^/boring(/(.*?))?/?", boring.Main),
   ("^/connect(/(.*?))?/?", connect.Main),
   ("^/.*$", base.NotFound)
 ]
