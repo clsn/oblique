@@ -17,6 +17,7 @@ import vary
 import googlesets
 import search
 import connect
+import isbn
 
 uris = [
   ("^/$", base.Index),
@@ -34,6 +35,7 @@ uris = [
   ("^/sets(/(.*?))?/?", googlesets.Main),
   ("^/search(/(.*?))?/?", search.Main),
   ("^/connect(/(.*?))?/?", connect.Main),
+  ("^/isbn(/(.*))?/?", isbn.Main),
   ("^/.*$", base.NotFound)
 ]
 
