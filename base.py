@@ -19,6 +19,5 @@ class Index(RequestHandler):
 class NotFound(RequestHandler):
 
     def get(self):
-        req=self.request.path
+        req = self.request.path
         return self.ok("Service (%s) not found, see %s for details." % (req, URI))
-
