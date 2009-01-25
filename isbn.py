@@ -29,12 +29,18 @@ class Main(base.RequestHandler):
                 first=first.findNext("a")
                 if first["href"].startswith("itemDetail"):
                     break
-            info={}
+        except:
+            return self.ok("Could not find/parse ISBN info.")
+        info={"title":"",
+              "isbn":"",
+              "author":"",
+              "pub":""}
+        try:
             info["title"]=first.string
             info["isbn"]=first.findNext("b").string
             info["author"]=first.findNext("u").string
             info["pub"]=first.findNext("i").string
         except:
-            return self.ok("Could not find/parse ISBN info.")
+            pass
         return self.ok("%(author)s, %(title)s (%(isbn)s): %(pub)s"%info)
 

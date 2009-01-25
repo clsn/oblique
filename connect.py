@@ -69,6 +69,10 @@ class Main(base.RequestHandler):
         if not message:
             # Try this?
             u=self.tree.find('i')
+            if not u:
+                # FAIL.
+                message="Fail.  No connection found."
+                return self.ok(message)
             name=str(u.string)
             [f, s]=name.split(' ',1)
             if actor1 == name:
