@@ -12,7 +12,7 @@ import soccer
 import stupid
 import ticket
 import unicode
-import charref
+import entity
 import internet
 import vary
 import googlesets
@@ -32,7 +32,7 @@ uris = [
   ("^/ticket(/(.*?))?(/(.*?))?/?", ticket.Main),
   ("^/internet(/(.*?))?/?", internet.Main),
   ("^/unicode(/(.*?))?/?", unicode.Main),
-  ("^/charref(/(.*?))?/?", charref.Main),
+  ("^/entity(/(.*?))?/?", entity.Main),
   ("^/vary(/(.*?))?/?", vary.Main),
   ("^/sets(/(.*?))?/?", googlesets.Main),
   ("^/search(/(.*?))?/?", search.Main),
