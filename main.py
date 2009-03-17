@@ -20,6 +20,7 @@ import search
 import connect
 import isbn
 import dwim
+import whois
 
 uris = [
   ("^/$", base.Index),
@@ -40,6 +41,7 @@ uris = [
   ("^/connect(/(.*?))?/?", connect.Main),
   ("^/isbn(/(.*))?/?", isbn.Main),
   ("^/dwim(/(.*))?/?", dwim.Main),
+  ("^/whois(/(.*))?/?", whois.Main),
   ("^/.*$", base.NotFound)
 ]
 
