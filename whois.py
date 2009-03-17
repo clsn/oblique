@@ -31,5 +31,6 @@ class Main(base.RequestHandler):
             message += " to %s" % base.collapse(tree.find(".//owner/name").text)
         except:
             pass
-        message += "."
+        if message[-1] != ".":
+            message += "."
         return self.ok(message.encode("utf8"))
