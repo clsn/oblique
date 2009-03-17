@@ -19,6 +19,7 @@ import googlesets
 import search
 import connect
 import isbn
+import dwim
 
 uris = [
   ("^/$", base.Index),
@@ -38,6 +39,7 @@ uris = [
   ("^/search(/(.*?))?/?", search.Main),
   ("^/connect(/(.*?))?/?", connect.Main),
   ("^/isbn(/(.*))?/?", isbn.Main),
+  ("^/dwim(/(.*))?/?", dwim.Main),
   ("^/.*$", base.NotFound)
 ]
 
