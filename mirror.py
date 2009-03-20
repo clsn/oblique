@@ -16,10 +16,7 @@ class Main(base.RequestHandler):
         if random.randint(0, 1):
             soup = BeautifulSoup.BeautifulSoup(api.urlfetch.fetch(INSULT_URI).content)
             text = soup.findAll('body')[0].find(recursive=False, text=True)
-            answer = "No"
         else:
             soup = BeautifulSoup.BeautifulSoup(api.urlfetch.fetch(COMPLIMENT_URI).content)
             text = soup.findAll('h2')[0].find(recursive=False, text=True)
-            answer = "Yes"
-        return self.ok("%s. %s" % (answer, " ".join(text.split())))
-
+        return self.ok(" ".join(text.split()))
