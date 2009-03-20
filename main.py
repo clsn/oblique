@@ -3,7 +3,7 @@ import wsgiref.handlers
 from google.appengine.ext import webapp
 
 import base
-import christmas
+import question
 import identica
 import lastfm
 import fact
@@ -24,7 +24,7 @@ import whois
 
 uris = [
   ("^/$", base.Index),
-  ("^/christmas(/.*?)?", christmas.Main),
+  ("^/question(/.*?)?", question.Main),
   ("^/identica(/(.*?))?(/(.*?))?/?", identica.Main),
   ("^/lastfm(/(.*?))?(/(.*?))?/?", lastfm.Main),
   ("^/fact(/(.*?))?/?", fact.Main),
