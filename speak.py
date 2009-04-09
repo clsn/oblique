@@ -64,23 +64,30 @@ class Main(base.RequestHandler):
         if not uri:
             self.ok("Please provide a URI.")
         uri = urllib.unquote(uri)
-        try:
-            if not uri.startswith("http"):
-                uri = "http://" + uri
-            html = api.urlfetch.fetch(uri).content
-            tree = BeautifulSoup.BeautifulSoup(html)
-        except Exception:
-            return self.ok("Error fetching URI.")
-        elements = []
-        for element_name in element_names:
-            elements += tree.findAll(element_name)
-        text = ""
-        for element in elements:
-            for anchor in element.findAll("a"):
-                anchor.extract()
-            text += html2text.html2text(element.prettify().decode("utf8")).encode("utf8")
-        if not text.strip():
+        if uri.startswith("data:"):
+            text = uri[5:]
+        else:
+            try:
+                if not uri.startswith("http"):
+                    uri = "http://" + uri
+                html = api.urlfetch.fetch(uri).content
+                tree = BeautifulSoup.BeautifulSoup(html)
+            except Exception:
+                return self.ok("Error fetching URI.")
+            elements = []
+            for element_name in element_names:
+                elements += tree.findAll(element_name)
+            text = ""
+            for element in elements:
+                for anchor in element.findAll("a"):
+                    anchor.extract()
+                text += html2text.html2text(element.prettify().decode("utf8")).encode("utf8")
+        if not "".join(text.split()):
             return self.ok("Nothing to say.")
         markov_dict, end_sentence_list = self.get_markov_dict(text)
-        return self.ok(self.speak(markov_dict, end_sentence_list))
+        try:
+            message = self.speak(markov_dict, end_sentence_list)
+        except:
+            message = "Yeah, whatever."
+        return self.ok(message)
 
