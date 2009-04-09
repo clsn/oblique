@@ -18,7 +18,7 @@ class Main(base.RequestHandler):
 
     def speak(self, markov_dict, end_sentence_list):
         key = ()
-        count = random.randint(2, 6)
+        count = random.randint(2, 4)
         response_list = []
         while True:
             if markov_dict.has_key(key):
@@ -65,6 +65,8 @@ class Main(base.RequestHandler):
             self.ok("Please provide a URI.")
         uri = urllib.unquote(uri)
         try:
+            if not uri.startswith("http"):
+                uri = "http://" + uri
             html = api.urlfetch.fetch(uri).content
             tree = BeautifulSoup.BeautifulSoup(html)
         except Exception:
