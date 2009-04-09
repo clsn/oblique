@@ -12,7 +12,7 @@ import base
 from contrib import BeautifulSoup
 from contrib import html2text
 
-element_names = ["p", "dl"]
+element_names = ["p", "dl", "blockquote"]
 
 class Main(base.RequestHandler):
 
@@ -79,6 +79,8 @@ class Main(base.RequestHandler):
             for anchor in element.findAll("a"):
                 anchor.extract()
             text += html2text.html2text(element.prettify().decode("utf8")).encode("utf8")
+        if not text.strip():
+            return self.ok("Nothing to say.")
         markov_dict, end_sentence_list = self.get_markov_dict(text)
         return self.ok(self.speak(markov_dict, end_sentence_list))
 
