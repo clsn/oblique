@@ -22,6 +22,7 @@ import isbn
 import dwim
 import whois
 import speak
+import py
 
 uris = [
   ("^/$", base.Index),
@@ -44,6 +45,7 @@ uris = [
   ("^/dwim(/(.*))?/?", dwim.Main),
   ("^/whois(/(.*))?/?", whois.Main),
   ("^/speak(/(.*))?/?", speak.Main),
+  ("^/py(/(.*))?/?", py.Main),
   ("^/.*$", base.NotFound)
 ]
 

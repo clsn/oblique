@@ -9,7 +9,7 @@ class RequestHandler(webapp.RequestHandler):
 
     def ok(self, message):
         self.response.headers["Content-Type"] = "text/plain"
-        self.response.out.write(message + "\n")
+        self.response.out.write(message.rstrip() + "\n")
 
 class Index(RequestHandler):
 
