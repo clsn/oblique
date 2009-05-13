@@ -46,13 +46,16 @@ from google.appengine import api
 
 import base
 
+def get(uri):
+    return urllib.urlopen(uri).read():
+
 def run(uri):
-    exec(urllib.urlopen(uri).read())
+    exec(get(uri))
 
 def load(uri):
     module = new.module("module")
     sys.modules["module"] = module
-    exec urllib.urlopen(uri).read() in module.__dict__
+    exec get(uri) in module.__dict__
     return module
 
 class Main(base.RequestHandler):
