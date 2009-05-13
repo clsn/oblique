@@ -12,7 +12,6 @@ import feedparser
 import getopt
 import glob
 import gzip
-import html2text
 import htmlentitydefs
 import itertools
 import mailbox
@@ -38,6 +37,7 @@ import urllib2
 import urlparse
 import xml
 import zlib
+from html2text import html2text
 from os import path
 from xml.dom import minidom
 
