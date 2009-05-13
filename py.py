@@ -10,14 +10,14 @@ class Main(base.RequestHandler):
         command = args[1] or ""
         command = urllib.unquote(command)
         try:
-            self.ok(str(eval(command)))
-        except SyntaxError:
-            output = StringIO.StringIO()
-            sys.stdout = output
-            sys.stderr = output
             try:
+                self.ok(str(eval(command)))
+            except SyntaxError:
+                output = StringIO.StringIO()
+                sys.stdout = output
+                sys.stderr = output
                 exec(command)
-            except Exception, error:
-                return self.ok("error: " + str(error))
-            output.seek(0)
-            self.ok(output.readline())
+                output.seek(0)
+                self.ok(output.readline())
+        except Exception, error:
+            return self.ok("error: " + str(error))
