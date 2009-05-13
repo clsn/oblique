@@ -2,27 +2,27 @@ import wsgiref.handlers
 
 from google.appengine.ext import webapp
 
-import base
-import mirror
-import identica
-import lastfm
-import fact
-import steps
-import soccer
-import stupid
-import ticket
-import unicode
-import entity
-import internet
-import vary
-import googlesets
-import search
-import connect
-import isbn
-import dwim
-import whois
-import speak
-import py
+from service import base
+from service import mirror
+from service import identica
+from service import lastfm
+from service import fact
+from service import steps
+from service import soccer
+from service import stupid
+from service import ticket
+from service import unicode
+from service import entity
+from service import internet
+from service import vary
+from service import googlesets
+from service import search
+from service import connect
+from service import isbn
+from service import dwim
+from service import whois
+from service import speak
+from service import py
 
 uris = [
   ("^/$", base.Index),
