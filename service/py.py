@@ -47,7 +47,7 @@ from google.appengine import api
 import base
 
 def get(uri):
-    return urllib.urlopen(uri).read():
+    return urllib.urlopen(uri).read()
 
 def run(uri):
     exec(get(uri))
