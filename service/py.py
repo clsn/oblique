@@ -51,6 +51,7 @@ def run(uri):
 
 def load(uri):
     module = new.module("module")
+    sys.modules["module"] = module
     exec urllib.urlopen(uri).read() in module.__dict__
     return module
 
