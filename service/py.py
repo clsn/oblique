@@ -49,6 +49,9 @@ import base
 def get(uri):
     return urllib.urlopen(uri).read()
 
+def text(html):
+    return html2text(html).encode("utf8")
+
 def run(uri):
     exec(get(uri))
 
