@@ -1,13 +1,13 @@
 import csv
-import urllib
+import html2text
 import StringIO
+import urllib
 
 from google.appengine import api
 
 from django.utils import simplejson
 
 import base
-from contrib import html2text
 
 API_URI = "http://www.searchmash.com/results/"
 

@@ -1,12 +1,12 @@
-import urllib
-import StringIO
+import BeautifulSoup
 import csv
+import re
+import StringIO
+import urllib
 
 from google.appengine import api
 
 import base
-from contrib import BeautifulSoup
-import re
 
 baseuri="http://oracleofbacon.org/cgi-bin/movielinks"
 

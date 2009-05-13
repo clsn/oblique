@@ -1,9 +1,9 @@
+import BeautifulSoup
 import urllib
 
 from google.appengine import api
 
 import base
-from contrib import BeautifulSoup
 
 class Main(base.RequestHandler):
 

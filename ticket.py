@@ -1,9 +1,9 @@
+import feedparser
 import urllib
 
 from google.appengine import api
 
 import base
-from contrib import feedparser
 
 URI="http://issues.apache.org/jira/si/jira.issueviews:issue-xml"
 

@@ -1,10 +1,10 @@
+import BeautifulSoup
 import random
 import urllib
 
 from google.appengine import api
 
 import base
-from contrib import BeautifulSoup
 
 INSULT_URI = "http://trevorstone.org/curse/curse.php?number=1"
 

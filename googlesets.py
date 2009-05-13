@@ -1,12 +1,12 @@
-import urllib
-import StringIO
+import BeautifulSoup
 import csv
+import re
+import StringIO
+import urllib
 
 from google.appengine import api
 
 import base
-from contrib import BeautifulSoup
-import re
 
 baseuri="http://labs.google.com/sets"
 
@@ -45,5 +45,5 @@ class Main(base.RequestHandler):
             if not message:
                 message="Nothing found. All lonely."
         except:
-            return self.ok("Error parsing results.")        
+            return self.ok("Error parsing results.")
         return self.ok(message)

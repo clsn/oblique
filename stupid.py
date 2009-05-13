@@ -1,3 +1,5 @@
+import BeautifulSoup
+import html2text
 import re
 import StringIO
 import urllib
@@ -5,9 +7,6 @@ import urllib
 from google.appengine import api
 
 import base
-
-from contrib import BeautifulSoup
-from contrib import html2text
 
 API_URI = "http://stupidfilter.org/demo.php"
 

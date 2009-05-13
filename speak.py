@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+import BeautifulSoup
+import html2text
 import random
 import re
 import time
@@ -8,9 +10,6 @@ import urllib
 from google.appengine import api
 
 import base
-
-from contrib import BeautifulSoup
-from contrib import html2text
 
 element_names = ["p", "dl", "blockquote"]
 

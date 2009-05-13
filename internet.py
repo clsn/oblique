@@ -1,13 +1,12 @@
+import BeautifulSoup
 import re
 import StringIO
+import unescape
 import urllib
 
 from google.appengine import api
 
 import base
-
-from contrib import BeautifulSoup
-from contrib import unescape
 
 API_URI = "http://voiceoftheinter.net/"
 
