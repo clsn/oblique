@@ -14,6 +14,7 @@ import glob
 import gzip
 import htmlentitydefs
 import itertools
+import new
 import mailbox
 import md5
 import mimetypes
@@ -45,20 +46,28 @@ from google.appengine import api
 
 import base
 
+def run(uri):
+    exec(urllib.urlopen(uri).read())
+
+def load(uri):
+    module = new.module("module")
+    exec(urllib.urlopen(uri).read(), module.__dict__)
+    return module
+
 class Main(base.RequestHandler):
 
     def get(self, *args):
         command = args[1] or ""
         command = urllib.unquote(command)
+        output = StringIO.StringIO()
+        sys.stdout = output
+        sys.stderr = output
         try:
             try:
-                self.ok(str(eval(command)))
+                output.write(str(eval(command)))
             except SyntaxError:
-                output = StringIO.StringIO()
-                sys.stdout = output
-                sys.stderr = output
                 exec(command)
-                output.seek(0)
-                self.ok(output.readline())
+            output.seek(0)
+            self.ok(output.readline())
         except Exception, error:
             return self.ok("error: " + str(error))
