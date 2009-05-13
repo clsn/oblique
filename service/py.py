@@ -1,5 +1,4 @@
 import BeautifulSoup
-import dateutil
 import base64
 import chardet
 import codecs
@@ -7,6 +6,7 @@ import collections
 import copy
 import csv
 import datetime
+import dateutil
 import encodings
 import feedparser
 import getopt
@@ -51,7 +51,7 @@ def run(uri):
 
 def load(uri):
     module = new.module("module")
-    exec(urllib.urlopen(uri).read(), module.__dict__)
+    exec urllib.urlopen(uri).read() in module.__dict__
     return module
 
 class Main(base.RequestHandler):
