@@ -70,4 +70,7 @@ class Main(base.RequestHandler):
             output.seek(0)
             self.ok(output.readline())
         except Exception, error:
-            return self.ok("error: " + str(error))
+            if str(error):
+                return self.ok("%s: %s" % (type(error).__name__, str(error)))
+            else:
+                return self.ok(type(error).__name__)
