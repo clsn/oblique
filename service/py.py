@@ -56,10 +56,9 @@ def run(uri):
     exec(get(uri))
 
 def load(uri):
-    module = new.module("module")
-    sys.modules["module"] = module
-    exec get(uri) in module.__dict__
-    return module
+    load.module = new.module("module")
+    exec get(uri) in load.module.__dict__
+    return load.module
 
 class Main(base.RequestHandler):
 
