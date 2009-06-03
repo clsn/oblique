@@ -23,6 +23,7 @@ from service import dwim
 from service import whois
 from service import speak
 from service import py
+from service import wolframalpha
 
 uris = [
   ("^/$", base.Index),
@@ -46,6 +47,7 @@ uris = [
   ("^/whois(/(.*))?/?", whois.Main),
   ("^/speak(/(.*))?/?", speak.Main),
   ("^/py(/(.*))?/?", py.Main),
+  ("^/wa(/(.*))?/?", wolframalpha.Main),
   ("^/.*$", base.NotFound)
 ]
 
