@@ -23,7 +23,7 @@ from service import dwim
 from service import whois
 from service import speak
 from service import py
-#from service import wolframalpha
+from service import wolframalpha
 from service import fourchan
 
 uris = [
@@ -48,7 +48,7 @@ uris = [
   ("^/whois(/(.*))?/?", whois.Main),
   ("^/speak(/(.*))?/?", speak.Main),
   ("^/py(/(.*))?/?", py.Main),
-#  ("^/wa(/(.*))?/?", wolframalpha.Main),
+  ("^/wa(/(.*))?/?", wolframalpha.Main),
   ("^/4chan/?", fourchan.Main),
   ("^/.*$", base.NotFound)
 ]
