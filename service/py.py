@@ -25,6 +25,8 @@ import quopri
 import random
 import re
 import sets
+import simplejson
+import simplejson as json
 import socket
 import string
 import StringIO
@@ -38,6 +40,7 @@ import urllib2
 import urlparse
 import xml
 import zlib
+from BeautifulSoup import BeautifulSoup as soup
 from html2text import html2text
 from os import path
 from xml.dom import minidom
