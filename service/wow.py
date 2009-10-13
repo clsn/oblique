@@ -12,11 +12,13 @@ class Main(base.RequestHandler):
         realm = args[1] or ""
         if not realm:
             return self.ok("Please specify a realm.")
-        realm = urllib.unquote(realm)
+        realm = urllib.unquote(realm).lower()
         response = api.urlfetch.fetch(URI).content.lower()
-        token = "#660d02;\">%s" % realm.lower()
+        if realm not in response:
+            return self.ok("That breaks science")
+        token = "#660d02;\">%s" % realm
         if token in response:
-            return self.ok("%s is down" % realm)
+            return self.ok("%s is down" % realm.title())
         return self.ok("%s is up" % realm)
 
 
