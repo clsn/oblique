@@ -25,6 +25,7 @@ from service import speak
 from service import py
 from service import wolframalpha
 from service import fourchan
+from service import wow
 
 uris = [
   ("^/$", base.Index),
@@ -50,6 +51,7 @@ uris = [
   ("^/py(/(.*))?/?", py.Main),
   ("^/wa(/(.*))?/?", wolframalpha.Main),
   ("^/4chan/?", fourchan.Main),
+  ("^/wow(/(.*?))?/?", wow.Main),
   ("^/.*$", base.NotFound)
 ]
 
