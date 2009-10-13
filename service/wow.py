@@ -19,6 +19,6 @@ class Main(base.RequestHandler):
         token = "#660d02;\">%s" % realm
         if token in response:
             return self.ok("%s is down" % realm.title())
-        return self.ok("%s is up" % realm)
+        return self.ok("%s is up" % realm.title())
 
 
