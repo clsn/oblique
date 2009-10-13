@@ -16,5 +16,5 @@ class Main(base.RequestHandler):
         response = api.urlfetch.fetch(URI).content.lower()
         token = "#660D02;\">%s" % realm.lower()
         if token in response:
-            return self.ok("%s is up" % realm)
-        return self.ok("%s is down" % realm)
+            return self.ok("%s is down" % realm)
+        return self.ok("%s is up" % realm)
