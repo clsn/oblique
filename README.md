@@ -4,7 +4,7 @@ Phenny Web Services
 Introduction
 ------------
 
-A collection of Web services for the [http://inamidst.com/phenny/ Phenny] IRC bot, designed for and hosted on [http://code.google.com/appengine/ Google App Engine].
+A collection of Web services for the [Phenny](http://inamidst.com/phenny/) IRC bot, designed for and hosted on [Google App Engine](http://code.google.com/appengine/).
 
 > Phenny is a popular IRC bot written in Python. She runs on the Freenode IRC server amongst others, and has the usual sundry facilities that one expects from an IRC bot, such as Wikipedia and dictionary lookups. She is modularly extensible, and can reload modules on the fly.
 
