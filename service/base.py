@@ -1,6 +1,6 @@
 from google.appengine.ext import webapp
 
-URI = "http://code.google.com/p/phenny-ws/"
+URI = "http://github.com/nslater/oblique"
 
 def collapse(string):
     return " ".join(string.split())
@@ -14,10 +14,10 @@ class RequestHandler(webapp.RequestHandler):
 class Index(RequestHandler):
 
     def get(self):
-        return self.ok("Phenny Web Services, see %s for details." % URI)
+        return self.ok("See %s for details." % URI)
 
 class NotFound(RequestHandler):
 
     def get(self):
         req = self.request.path
-        return self.ok("Service (%s) not found, see %s for details." % (req, URI))
+        return self.ok("Service not found." % (req, URI))
