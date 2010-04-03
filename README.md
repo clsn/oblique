@@ -3,11 +3,7 @@ Oblique
 
 A collection of tiny web services, usable by anyone.
 
-The [Phenny](http://inamidst.com/phenny/) IRC bot is the primary interface:
-
-> Phenny is a popular IRC bot written in Python. She runs on the Freenode IRC server amongst others, and has the usual sundry facilities that one expects from an IRC bot, such as Wikipedia and dictionary lookups. She is modularly extensible, and can reload modules on the fly.
-
-Phenny is pre-configured to use all of the services listed on the [wiki](http://wiki.github.com/nslater/oblique/) with the `oblique` command.
+The [Phenny](http://inamidst.com/phenny/) IRC bot is pre-configured to use all of the services listed on the [wiki](http://wiki.github.com/nslater/oblique/) with the `oblique` command.
 
 If `nslater` wanted to use the LastFM service he might do:
 
