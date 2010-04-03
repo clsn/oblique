@@ -35,16 +35,16 @@ The [wiki](http://wiki.github.com/nslater/oblique/)  is designed to be parsed by
 
 After adding a new service you must refresh Phenny:
 
-bc. <nslater> .o refresh
-<phenny> nslater: Okay, found 20 services.
+    <nslater> .o refresh
+    <phenny> nslater: Okay, found 20 services.
 
 Phenny will now be able to call any of the services listed by using the `oblique` command:
 
-bc. <nslater> .o name
-<phenny> results
+    <nslater> .o name
+    <phenny> results
 
 Service urls may include the following variables that will automatically be replaced:
 
-  # @${args}@ - Arguments included after the command name
-  # @${sender}@ - If sent from a channel, the channel name. If sent via privmsg the same as @${nick}@
-  # @${nick}@ - Nick of message sender
+ * @${args}@ - Arguments included after the command name
+ * @${sender}@ - If sent from a channel, the channel name. If sent via privmsg the same as @${nick}@
+ * @${nick}@ - Nick of message sender
