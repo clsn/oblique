@@ -3,7 +3,7 @@ Oblique
 
 A collection of tiny web services, usable by anyone.
 
-The [Phenny](http://inamidst.com/phenny/) IRC bot access the services listed on the [wiki](http://wiki.github.com/nslater/oblique/) with the `oblique` command.
+The [Phenny](http://inamidst.com/phenny/) IRC bot exposes the services listed on the [wiki](http://wiki.github.com/nslater/oblique/) with the `oblique` command.
 
 If `nslater` wanted to use the LastFM service he might do:
 
