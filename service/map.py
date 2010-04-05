@@ -9,38 +9,24 @@ import base
 class Main(base.RequestHandler):
 
     def get(self, *args):
+
         args = args[1] or ""
-        args = urllib.unquote(args).lower()
-        args = args.split(" ")
-        if len(args) > 0:
-            command = args[0]
-        else:
-            command = None
-        if len(args) > 1:
-            query = " ".join(args[1:])
-        else:
-            query = None
-        if not command:
-            return self.ok("Please specify a command: find show gen")
-        if not command in ["find", "show", "gen"]:
-            return self.ok("Invalid command.")
-        if command in ["find", "show"] and not query:
+
+        if not args:
             return self.ok("Please specify a query.")
-        if command == "find":
-            if "*" not in query:
-                query = "*%s*" % query
-            matches = []
-            for name in file("gazetteer/output/unique.txt").readlines():
-                name = name.strip()
-                if fnmatch.fnmatch(name.lower(), query):
-                    matches.append(name)
-                if len(matches) > 19:
-                    break
-            if matches:
-                return self.ok(", ".join(matches))
-            else:
-                return self.ok("No matches.")
-        if command == "show":
-            return self.ok("Patches welcome!")
-        if command == "gen":
-            return self.ok("Patches welcome!")
+
+        args = urllib.unquote(args)
+
+        base_url = "http://tinyurl.com/api-create.php?url="
+
+        talis_url = "http://api.talis.com/tx?" + \
+            "xsl-uri=http://github.com/nslater/oblique/raw/master/talis.xsl&" + \
+            "xml-uri=http://api.talis.com/stores/ordnance-survey/items?" + \
+            "sort%3D%26max%3D100%26query%3D" + args + "%26offset%3D0&" + \
+            "content-type=text/html"
+
+        query_url = urllib.quote(talis_url)
+
+        url = api.urlfetch.fetch(base_url + query_url).content
+
+        self.ok(url)

@@ -11,16 +11,19 @@
   xmlns:ns.2="http://data.ordnancesurvey.co.uk/ontology/spatialrelations/"
   xmlns:ns.3="http://data.ordnancesurvey.co.uk/ontology/50kGazetteer/"
   xmlns:ns.4="http://www.w3.org/2000/01/rdf-schema#">
-
     <xsl:output method="html"/>
     <xsl:template match="/">
         <html>
-        <xsl:apply-templates select="/rdf:RDF/purl:channel"/>
+            <xsl:apply-templates select="/rdf:RDF/purl:channel"/>
         </html>
     </xsl:template>
     <xsl:template match="/rdf:RDF/purl:channel">
-        <h1>Ordnance Survey</h1>
-        <p>Your search for “<xsl:value-of select="purl:title"/>” returned <xsl:value-of select="os:totalResults"/> results:</p>
+        <h1>
+            Ordnance Survey
+        </h1>
+        <p>
+            Your search for “<xsl:value-of select="purl:title"/>” returned <xsl:value-of select="os:totalResults"/> results:
+        </p>
         <ul>
             <xsl:apply-templates select="/rdf:RDF/purl:item"/>
         </ul>
