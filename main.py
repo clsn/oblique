@@ -54,7 +54,7 @@ uris = [
   ("^/4chan/?", fourchan.Main),
   ("^/wow(/(.*?))?/?", wow.Main),
   ("^/map(/(.*?))?/?", map.Main),
-  ("^/.*$", base.NotFound)
+  ("^/.*$", base.NotFound),
 ]
 
 def main():
