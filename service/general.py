@@ -39,7 +39,7 @@ def do_generic_parse(url, xpth):
     it=con.find(xpth, pars.documentElement)
     if not it:
         return "ENOTFOUND"
-    stuff=gettext(it[0])
+    stuff=gettext(it[0]).replace("\n"," ").strip()
     return stuff[:200]
 
 class Main(base.RequestHandler):
