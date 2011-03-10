@@ -12,6 +12,7 @@ from google.appengine import api
 
 import base
 
+# We don't really need this; we can use //text() I think.
 def gettext(nod):
     if not nod:
         return ''
@@ -36,10 +37,11 @@ def do_generic_parse(url, xpth):
         return "Parsing failed for some reason"
     con=xpath.XPathContext()
     con.namespaces["x"]="http://www.w3.org/1999/xhtml"
-    it=con.find(xpth, pars.documentElement)
+    it=con.find(xpth+"//text()", pars.documentElement)
     if not it:
         return "ENOTFOUND"
-    stuff=gettext(it[0]).replace("\n"," ").strip()
+    stuff=reduce((lambda x,y: x+y), map((lambda x: x.data), it))
+    stuff=stuff.replace("\n"," ").strip()
     return stuff[:200]
 
 class Main(base.RequestHandler):
