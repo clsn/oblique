@@ -1,0 +1,84 @@
+10
+
+dir
+0
+https://phenny-ws.googlecode.com/svn/trunk/html5lib/filters
+https://phenny-ws.googlecode.com/svn
+add
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+7e07635c-8367-11dd-82a6-aba1b78984bd
+
+sanitizer.py
+file
+
+
+
+add
+
+_base.py
+file
+
+
+
+add
+
+inject_meta_charset.py
+file
+
+
+
+add
+
+whitespace.py
+file
+
+
+
+add
+
+__init__.py
+file
+
+
+
+add
+
+formfiller.py
+file
+
+
+
+add
+
+optionaltags.py
+file
+
+
+
+add
+
+lint.py
+file
+
+
+
+add
+
