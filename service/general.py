@@ -12,19 +12,6 @@ from google.appengine import api
 
 import base
 
-# We don't really need this; we can use //text() I think.
-def gettext(nod):
-    if not nod:
-        return ''
-    elif isinstance(nod, xml.dom.minidom.Text):
-        return nod.data
-    elif isinstance(nod, xml.dom.minidom.Element):
-        rv=''
-        for n in nod.childNodes:
-            rv+=gettext(n)
-        return rv
-    return "?????"
-
 def do_generic_parse(url, xpth):
     url=url.replace(' ','%20')
     thepage=api.urlfetch.fetch(url).content
