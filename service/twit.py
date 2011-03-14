@@ -55,7 +55,6 @@ class Main(base.RequestHandler):
                     return self.ok("%s did not look like a username"%term)
                 resp=api.urlfetch.fetch('http://api.twitter.com/users/show/'+ \
                                       term + '.json').content
-                return self.ok("not going to tell you.")
                 bits=json.loads(resp)
                 if bits.has_key('error'):
                     ans=bits['error']
