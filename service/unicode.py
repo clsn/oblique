@@ -1,11 +1,12 @@
 import unicodedata
 import urllib
+import re
 
 from google.appengine import api
 
 import base
 
-URI = "http://www.fileformat.info/info/unicode/char/%04X/index.htm"
+URI = "http://www.fileformat.info/info/unicode/char/%05X/"
 
 class Main(base.RequestHandler):
 
@@ -23,5 +24,28 @@ class Main(base.RequestHandler):
         try:
             name = unicodedata.name(unicode[0])
         except:
-            name = "(No name found)"
+            # Our unicodedata was lacking; let's ask fileformat.info
+            import html5lib, xpath, StringIO
+            url=URI%ord(unicode[0])
+            bytes=api.urlfetch.fetch(url).content
+            fp=StringIO.StringIO(bytes)
+            pars=None
+            try:
+                pars=html5lib.parse(fp, treebuilder="dom")
+            except Exception, e:
+                name = "(No name found)"
+            if not pars:
+                name = "(No name found)"
+            else: 
+                con=xpath.XPathContext()
+                con.namespaces["x"]="http://www.w3.org/1999/xhtml"
+                it=con.find("//x:title//text()", pars.documentElement)
+                if not it:
+                    name="(No name found)"
+                else:
+                    name=reduce((lambda x,y: x+y), map((lambda x: x.data), it))
+                    name=" ".join(name.split())
+                    m=re.search(r"'(.*?)'", name)
+                    if m:
+                        name=m.group(1)
         self.ok("%s - %s" % (name, URI % ord(unicode[0])))
