@@ -15,7 +15,7 @@ def fetchbyID(term):
         ans=bits['text']
     else:
         ans="could not fetch tweet by ID"
-    return ans
+    return re.sub(r'\s+', ' ', ans)
     
 
 class Main(base.RequestHandler):
@@ -65,7 +65,7 @@ class Main(base.RequestHandler):
                     ans=str(bits['status'])
             if not ans:
                 ans='???'
-            return self.ok(ans)
+            return self.ok(re.sub('\s+',' ',ans))
         elif len(params)==2:
             # two params means user and status id, which is the same as
             # just status id.
