@@ -28,6 +28,7 @@ from service import fourchan
 from service import wow
 from service import map
 from service import general
+from service import twit
 
 uris = [
   ("^/$", base.Index),
@@ -56,6 +57,7 @@ uris = [
   ("^/wow(/(.*?))?/?", wow.Main),
   ("^/map(/(.*?))?/?", map.Main),
   ("^/general(/(.*?))?/?", general.Main),
+  ("^/twit(/(.*?))?/?", twit.Main),
   ("^/.*$", base.NotFound),
 ]
 

@@ -20,4 +20,4 @@ class NotFound(RequestHandler):
 
     def get(self):
         req = self.request.path
-        return self.ok("Service not found." % (req, URI))
+        return self.ok("Service not found.")
