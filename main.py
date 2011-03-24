@@ -29,6 +29,7 @@ from service import wow
 from service import map
 from service import general
 from service import twit
+from service import jargon
 
 uris = [
   ("^/$", base.Index),
@@ -58,6 +59,7 @@ uris = [
   ("^/map(/(.*?))?/?", map.Main),
   ("^/general(/(.*?))?/?", general.Main),
   ("^/twit(/(.*?))?/?", twit.Main),
+  ("^/jargon(/(.*?))?/?", jargon.Main),
   ("^/.*$", base.NotFound),
 ]
 
