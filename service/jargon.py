@@ -12,7 +12,7 @@ class Main(base.RequestHandler):
     def get(self, *args):
         arg=args[0].split('/')[1] # starts with a slash...
         ch=arg.strip()[0].upper()
-        pg=urllib.quote(urllib.unquote(arg.strip()).replace(' ','-').lower())
+        pg=urllib.quote(urllib.unquote(arg.strip()).replace(' ','-'))
         url="http://www.catb.org/jargon/html/" + ch + "/" + pg + ".html"
         data=api.urlfetch.fetch(url)
         try:
