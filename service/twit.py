@@ -5,6 +5,15 @@ import simplejson as json
 import urllib
 import re
 
+def format(bits):
+    format = "%(text)s - http://twitter.com/%(username)s/%(id)s"
+    msg = format % {
+        "id": bits["id"],
+        "username": bits["user"]["screen_name"],
+        "text": bits["text"],
+    }
+    return msg
+
 def fetchbyID(term):
     resp=api.urlfetch.fetch('http://api.twitter.com/statuses/show/'+ \
                                 term + '.json').content
@@ -12,11 +21,11 @@ def fetchbyID(term):
     if bits.has_key('error'):
         ans=bits['error']
     elif bits.has_key('text'):
-        ans=bits['text']
+        ans=format(bits)
     else:
         ans="could not fetch tweet by ID"
     return re.sub(r'\s+', ' ', ans)
-    
+
 
 class Main(base.RequestHandler):
 
@@ -60,7 +69,7 @@ class Main(base.RequestHandler):
                     ans=bits['error']
                 elif bits.has_key('status') and \
                         bits['status'].has_key('text'):
-                    ans=bits['status']['text']
+                    ans=format(bits['status'])
                 else:
                     ans=str(bits['status'])
             if not ans:
