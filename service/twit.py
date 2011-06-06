@@ -6,7 +6,7 @@ import urllib
 import re
 
 def format(bits):
-    format = "%(text)s - http://twitter.com/%(username)s/%(id)s"
+    format = "%(text)s - http://twitter.com/%(username)s/status/%(id)s"
     msg = format % {
         "id": bits["id"],
         "username": bits["user"]["screen_name"],
